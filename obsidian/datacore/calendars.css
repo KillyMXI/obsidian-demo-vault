@@ -1,0 +1,229 @@
+@scope {
+
+  .calendar-day {
+    position: relative;
+    display: grid;
+    grid-template-areas:
+      "day   month note"
+      "links links links";
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr;
+    gap: var(--size-2-2);
+
+    --calendar-day-border-color: var(--background-modifier-border);
+    border: 1px solid var(--calendar-day-border-color);
+    border-radius: 4px;
+
+    --calendar-day-bg-color: var(--color-base-00);
+    background-color: var(--calendar-day-bg-color);
+
+    &.no-page {
+      border-style: dashed;
+    }
+    &.this-day {
+      outline: 2px solid var(--color-base-40);
+      &.no-page {
+        outline-style: dashed;
+      }
+    }
+    &.the-day > .calendar-day__day {
+      font-weight: bold;
+
+      & > a {
+        font-weight: bold;
+      }
+    }
+
+    & > .calendar-day__day {
+      grid-area: day;
+      margin-left: 0.4em;
+
+      & > a {
+        text-decoration: none;
+      }
+    }
+    &.no-page > .calendar-day__day {
+      color: var(--color-base-50);
+    }
+
+    & > .calendar-day__note {
+      grid-area: note;
+      justify-self: end;
+      margin-right: 0.4em;
+    }
+
+    & > .calendar-day__month {
+      grid-area: month;
+      text-align: center;
+      color: var(--color-base-50);
+    }
+
+    & > .calendar-day__weekday {
+      position: absolute;
+      bottom: calc(100% + 0.05em);
+      width: 100%;
+      text-align: center;
+      color: var(--color-base-50);
+      pointer-events: none;
+
+      .the-weekday > & {
+        font-weight: bold;
+      }
+    }
+
+    & > .calendar-day__inlinks {
+      grid-area: links;
+      position: relative;
+      overflow: hidden;
+      margin: 0 0.25em;
+
+      &:hover {
+        overflow: visible;
+      }
+
+      & > .calendar-day__inlinks-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: var(--calendar-day-bg-color);
+        border: 1px solid transparent;
+        border-top-color: var(--calendar-day-border-color);
+        border-radius: 0;
+
+        .calendar-day__inlinks:hover > & {
+          overflow: visible;
+          margin: calc(0px - var(--size-2-3));
+          padding: var(--size-2-3);
+          position: absolute;
+          max-height: none;
+          z-index: 10;
+          left: auto;
+          right: auto;
+          top: 0;
+          border-color: var(--calendar-day-border-color);
+          border-radius: 4px;
+        }
+
+        & > .calendar-day__inlink {
+          margin: 0;
+          padding: 0;
+          white-space: nowrap;
+
+          & > a {
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  } /* .calendar-day */
+
+
+  .rolling-week-calendar {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-2-3);
+    margin-top: 1.1lh;
+    margin-bottom: var(--size-2-2);
+
+    & > .rolling-week-calendar__weeks {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-2-2);
+
+      & > .rolling-week-calendar__week {
+        display: flex;
+        flex-direction: row;
+        gap: var(--size-2-2);
+        height: 5.5em;
+
+        & > * {
+          flex: 1;
+          min-width: 0;
+        }
+
+        & .calendar-day {
+
+          &.this-month {
+            --calendar-day-bg-color: var(--color-base-10);
+
+            &.no-page {
+              --calendar-day-bg-color: var(--color-base-05);
+            }
+          }
+
+          &.this-weekday > .calendar-day__weekday {
+            color: var(--color-base-60);
+          }
+        }
+      }
+    }
+
+    & > .rolling-week-calendar__controls {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & > .rolling-day-calendar__days {
+        & > .calendar-day {
+          &.this-day > .calendar-day__weekday {
+            color: var(--color-base-60);
+          }
+        }
+      }
+
+      & > .rolling-week-calendar__control-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--size-2-2);
+      }
+    }
+  } /* .rolling-week-calendar */
+
+
+  .rolling-day-calendar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-2-3);
+    margin-top: 1lh;
+    overflow: visible;
+
+    & > .rolling-day-calendar__controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & > .rolling-day-calendar__control-group {
+        display: flex;
+        align-items: center;
+        gap: var(--size-2-2);
+      }
+    }
+
+    & > .rolling-day-calendar__days {
+      display: flex;
+      gap: var(--size-2-2);
+      width: 100%;
+      height: 7em;
+      align-items: stretch;
+
+      & > * {
+        flex: 1;
+        min-width: 0;
+      }
+      
+      & > .calendar-day {
+
+        &.this-day > .calendar-day__weekday {
+          color: var(--color-base-60);
+        }
+      }
+    }
+  } /* .rolling-day-calendar */
+
+} /* @scope */
