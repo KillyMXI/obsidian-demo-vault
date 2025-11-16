@@ -35,10 +35,12 @@ function CalendarDay(props) {
     { debounce: 100 }
     );
 
+  const isDailyNote = note => /^\d{4}-\d{2}-\d{2}$/.test(note.$name);
+
   const promotedInlinks = [];
   const regularInlinks = [];
   for (const p of inlinkPages) {
-    if (p.value("calendarNote")) {
+    if (p.value("calendarNote") && !isDailyNote(p)) {
       promotedInlinks.push(p);
     } else {
       regularInlinks.push(p);
@@ -61,7 +63,7 @@ function CalendarDay(props) {
     : null;
 
   const customColor = pageCalendarColor
-    || inlinkPages.find(p => p.value("calendarColor"))?.value("calendarColor")
+    || inlinkPages.find(p => p.value("calendarColor") && !isDailyNote(p))?.value("calendarColor")
     || null;
 
   const classesStr = dc.useMemo(() => {

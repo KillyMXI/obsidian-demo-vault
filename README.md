@@ -1,7 +1,13 @@
 This is a demo vault for all [Obsidian](https://obsidian.md/) things that [KillyMXI](https://github.com/KillyMXI) decides / finds time to share with the world.
 
+- [GitHub](https://github.com/KillyMXI/obsidian-demo-vault)
+- [Web preview](https://killymxi.github.io/obsidian-demo-vault/readme.html)
+
 ## Changelog
 
+- 2025-11-16
+	- [Rolling calendar](Rolling%20calendar.md)
+		- fixed - should not promote links from other dailies containing `calendarNote` to note area
 - 2025-10-21
 	- demo vault first published
 	- added [Rolling calendar](Rolling%20calendar.md) views (using [Datacore](https://blacksmithgu.github.io/datacore/) plugin)

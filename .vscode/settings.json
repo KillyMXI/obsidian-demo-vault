@@ -7,6 +7,8 @@
     "Dataview",
     "inlink",
     "inlinks",
+    "Linkpath",
     "luxon"
-  ]
+  ],
+  "editor.insertSpaces": false
 }

@@ -11,7 +11,7 @@ Around the same time, I realized I pretty certainly have ADHD. That explains som
 
 Now, Datacore is available for everyone, and it allows much better ergonomics of created components. So I've rewritten my calendar, with some cleanup and improvements, and can present as something that is easy to adopt and adapt by almost any Obsidian user.
 
-Do I see this as a dedicated plugin? A dedicated plugin would be way more rigid compared to a Datacore component that can be modified any time according to shifting personal requirements. The only true organization system is the one that can grow and evolve with you. But I also would be happy to see less of bad calendars, including in plugins, if my creation can show the path to more ergonomic design.
+Do I see this as a dedicated plugin? A dedicated plugin would be way more rigid compared to a Datacore component that can be modified any time according to shifting personal requirements. The only true organization system is the one that can grow and evolve with you. But I also would be happy to see less of bad calendars, including in plugins, if my creation shows the path to more ergonomic design.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ Do I see this as a dedicated plugin? A dedicated plugin would be way more rigid 
 	- `obsidian/datacore/rollingDayCalendar.jsx`
 	- `obsidian/datacore/rollingWeekCalendar.jsx`
 
-_Note: there is currently no way for Datacore components to use relative paths. Paths inside files might need to be edited according to your vault organizational structure if you put them in a different place._
+_Note: there is currently no perfect way for Datacore components to use relative paths (waiting for [PR 150](https://github.com/blacksmithgu/datacore/pull/150) to be merged). Paths inside files might need to be edited according to your vault organizational structure if you put them in a different place._
 
 ## Rolling week calendar
 
@@ -33,7 +33,7 @@ It is like your monthly wall calendar with a room for notes, except you will nev
 
 And it uses note linking and properties to be a live presentation of all things that you choose to be aware of, without any convoluted vault organization.
 
-For each day cell contents see the [[#Calendar day]] section below.
+For each day cell contents see the [Calendar day](#Calendar%20day) section below.
 
 How to use:
 
@@ -155,7 +155,7 @@ It has following features:
 - note area (top right)
 	- _intended to only fit couple emojis - think what makes most sense for you_
 	- 📍 if the daily note contains `calendarNote` property - it will be put here
-	- 📍 if any notes linking to the daily note contain `calendarNote` property - all will be appended here as well, as links
+	- 📍 if any notes (except other dailies) linking to the daily note contain `calendarNote` property - all will be appended here as well, as links
 		- those links won't be put into inlinks list below
 			- intent: most common recurring tasks that don't require extra words, to free up the space in inlinks area for anything more special
 - inlinks area
@@ -168,7 +168,7 @@ It has following features:
 - border
 	- existing/non-existing daily notes - solid/dashed borders
 	- today - extra outline
-	- 📍 if the daily note or any note linking to it contains `calendarColor` property - its value will be set as the border color
+	- 📍 if the daily note or any note linking to it (except other dailies) contains `calendarColor` property - its value will be set as the border color
 		- _use inlink colors sparingly - there is no way to resolve color conflicts_
 - weekday
 	- today - more contrast color
@@ -188,3 +188,9 @@ Some CSS classes explained (for custom styling):
 | `.no-page`         | no daily page for this day                                                    |
 | `.is-current-page` | this calendar is on the daily page of this day                                |
 | `.has-inlinks`     | some pages (except for previous and next daily notes) are linking to this day |
+
+## Links
+
+- [obsidian-demo-vault/Rolling calendar.md at main · KillyMXI/obsidian-demo-vault](https://github.com/KillyMXI/obsidian-demo-vault/blob/main/Rolling%20calendar.md)
+- [Rolling calendar](https://killymxi.github.io/obsidian-demo-vault/rolling-calendar.html) web preview
+- [Rolling Calendar (using Datacore) - Share & showcase - Obsidian Forum](https://forum.obsidian.md/t/rolling-calendar-using-datacore/107093)
